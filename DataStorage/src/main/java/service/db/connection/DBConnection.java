@@ -16,7 +16,7 @@ public class DBConnection {
         try {
             Properties properties = new Properties();
             properties.load(new FileReader("src/main/resources/logInfo.properties"));
-            Handler handler = new FileHandler(properties.getProperty("connectionLog"),true);
+            Handler handler = new FileHandler(properties.getProperty("connectionLog"));
             handler.setFormatter(new SimpleFormatter());
             log.addHandler(handler);
             log.setUseParentHandlers(false);
