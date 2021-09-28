@@ -1,0 +1,38 @@
+[
+    {
+        "firstName" : "json1",
+        "lastName" : "json1",
+        "age" : 1,
+        "address" : {
+            "country" : "c1",
+            "town" : "t1"
+        }
+    },
+    {
+        "firstName" : "json2",
+        "lastName" : "json2",
+        "age" : 2,
+        "address" : {
+            "country" : "c2",
+            "town" : "t2"
+        }
+    },
+    {
+        "firstName" : "json3",
+        "lastName" : "json3",
+        "age" : 3,
+        "address" : {
+            "country" : "c3",
+            "town" : "t3"
+        }
+    },
+    {
+        "firstName" : "json4",
+        "lastName" : "json4",
+        "age" : 4,
+        "address" : {
+            "country" : "c4",
+            "town" : "t4"
+        }
+    }
+]

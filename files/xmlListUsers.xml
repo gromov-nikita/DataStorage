@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <User>
+        <firstName>xml1</firstName>
+        <lastName>xml1</lastName>
+        <age>1</age>
+        <Address> 
+            <country>c1</country>
+            <town>t1</town>
+        </Address>
+    </User>
+    <User>
+        <firstName>xml2</firstName>
+        <lastName>xml2</lastName>
+        <age>2</age>
+        <Address> 
+            <country>c2</country>
+            <town>t2</town>
+        </Address>
+    </User>
+    <User>
+        <firstName>xml3</firstName>
+        <lastName>xml3</lastName>
+        <age>3</age>
+        <Address> 
+            <country>c3</country>
+            <town>t3</town>
+        </Address>
+    </User>
+    <User>
+        <firstName>xml4</firstName>
+        <lastName>xml4</lastName>
+        <age>4</age>
+        <Address> 
+            <country>c4</country>
+            <town>t4</town>
+        </Address>
+    </User>
+</root>
