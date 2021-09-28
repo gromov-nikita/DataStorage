@@ -1,2 +1,2 @@
-сент. 28, 2021 6:47:07 PM service.db.connection.DBConnection <init>
+сент. 28, 2021 8:22:57 PM service.db.connection.DBConnection <init>
 INFO: mydb database. Created a connection.

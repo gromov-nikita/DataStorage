@@ -2,6 +2,7 @@ package service.parsers;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import service.notify.Notify;
 
 import java.io.*;
 import java.lang.reflect.Constructor;
@@ -30,6 +31,7 @@ public class JSONParser {
     public static List fileParser(String path, Class myClass) throws IOException,
             InvocationTargetException, NoSuchMethodException, NoSuchFieldException,
             InstantiationException, IllegalAccessException {
+        Notify.notify("JSON parsing...");
         String str = "";
         BufferedReader reader = null;
         try {
@@ -38,7 +40,9 @@ public class JSONParser {
             while (scan.hasNextLine()) {
                 str += scan.nextLine();
             }
-            return parseArr(str, myClass);
+            List list = parseArr(str, myClass);
+            Notify.notify("Successful JSON parsing.");
+            return list;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             throw new IOException();

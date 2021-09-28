@@ -1,6 +1,7 @@
 package service.parsers;
 
 import service.db.query.Queries;
+import service.notify.Notify;
 
 import java.io.*;
 import java.lang.reflect.Field;
@@ -24,6 +25,7 @@ public class CSVParser {
     }
     public static List fileParser(String path, Class myClass) throws IllegalAccessException,
             InvocationTargetException, InstantiationException {
+        Notify.notify("CSV parsing...");
         BufferedReader reader = null;
         List<String> list = new LinkedList<String>();
         try {
@@ -32,6 +34,8 @@ public class CSVParser {
             while(scanner.hasNext()) {
                 list.add(scanner.next());
             }
+            list = listHandler(list, myClass);
+            Notify.notify("Successful CSV parsing.");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -45,7 +49,7 @@ public class CSVParser {
             }
             logCSV.info("Parsing csv file : " + path);
         }
-        return listHandler(list, myClass);
+        return list;
     }
     public static List listHandler(List<String> list, Class myClass) throws IllegalAccessException,
             InstantiationException, InvocationTargetException {

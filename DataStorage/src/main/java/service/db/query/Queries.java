@@ -1,6 +1,8 @@
 package service.db.query;
 import models.user.IQueryTable;
 import service.db.connection.DBConnection;
+import service.notify.Notify;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
@@ -37,11 +39,13 @@ public class Queries {
     }
     public void insert(IQueryTable query) throws SQLException, NoSuchMethodException,
             InvocationTargetException, IllegalAccessException {
+        Notify.notify("Push to database...");
         StringBuffer str = new StringBuffer("INSERT INTO " +
                 query.getClass().getDeclaredMethod("getTableName").invoke(query) + " SET ");
         stringMaker(str,query);
         logQ.info(connection.getNameDB() + " " + str);
         statement.executeUpdate(String.valueOf(str));
+        Notify.notify("Successful push to database.");
     }
     public void deleteByID(Class myClass, int id) throws NoSuchMethodException,
             InvocationTargetException, IllegalAccessException, SQLException {
