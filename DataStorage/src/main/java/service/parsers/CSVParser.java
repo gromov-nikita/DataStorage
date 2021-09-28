@@ -1,17 +1,31 @@
 package service.parsers;
 
-import org.w3c.dom.Node;
+import service.db.query.Queries;
 
 import java.io.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
+import java.util.logging.*;
 
 public class CSVParser {
+    private static Logger logCSV = Logger.getLogger(CSVParser.class.getName());
+    static {
+        try {
+            Properties properties = new Properties();
+            properties.load(new FileReader("src/main/resources/logInfo.properties"));
+            Handler handler = new FileHandler(properties.getProperty("csvLog"));
+            handler.setFormatter(new SimpleFormatter());
+            logCSV.addHandler(handler);
+            logCSV.setUseParentHandlers(false);
+        } catch (IOException e) {
+            logCSV.log(Level.WARNING,"File logger not working");
+        }
+    }
     public static List fileParser(String path, Class myClass) throws IllegalAccessException,
             InvocationTargetException, InstantiationException {
         BufferedReader reader = null;
-        List<String> list = new LinkedList<>();
+        List<String> list = new LinkedList<String>();
         try {
             reader = new BufferedReader(new FileReader(path));
             Scanner scanner = new Scanner(reader);
@@ -29,12 +43,13 @@ public class CSVParser {
                     e.printStackTrace();
                 }
             }
+            logCSV.info("Parsing csv file : " + path);
         }
         return listHandler(list, myClass);
     }
     public static List listHandler(List<String> list, Class myClass) throws IllegalAccessException,
             InstantiationException, InvocationTargetException {
-        List<Object> ans = new LinkedList<>();
+        List<Object> ans = new LinkedList<Object>();
         for(String x : list) {
             ans.add(objectHandler(new ArrayList<String>(Arrays.asList(x.split(";"))), myClass));
         }

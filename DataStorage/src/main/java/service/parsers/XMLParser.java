@@ -9,15 +9,32 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Properties;
+import java.util.logging.*;
 
 public class XMLParser {
+    private static Logger logXML = Logger.getLogger(XMLParser.class.getName());
+    static {
+        try {
+            Properties properties = new Properties();
+            properties.load(new FileReader("src/main/resources/logInfo.properties"));
+            Handler handler = new FileHandler(properties.getProperty("xmlLog"));
+            handler.setFormatter(new SimpleFormatter());
+            logXML.addHandler(handler);
+            logXML.setUseParentHandlers(false);
+        } catch (IOException e) {
+            logXML.log(Level.WARNING,"File logger not working");
+        }
+    }
     public static List fileParser(String path, Class myClass) throws ParserConfigurationException,
             IOException, SAXException, IllegalAccessException, InvocationTargetException, InstantiationException {
+        logXML.info("Parsing xml file: " + path);
         DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = builderFactory.newDocumentBuilder();
         Document document = builder.parse(new File(path));

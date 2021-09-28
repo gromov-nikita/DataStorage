@@ -1,6 +1,6 @@
 package models.user;
 
-public class User {
+public class User implements IQueryTable{
     private String firstName;
     private String lastName;
     private int age;
@@ -26,5 +26,10 @@ public class User {
                 ", lastName='" + lastName + '\'' +
                 ", age=" + age +
                 '}';
+    }
+
+    @Override
+    public String getTableName() {
+        return "Users";
     }
 }
