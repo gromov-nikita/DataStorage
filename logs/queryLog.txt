@@ -1,26 +1,26 @@
-сент. 28, 2021 8:22:57 PM service.db.query.Queries <init>
+сент. 29, 2021 11:20:04 PM service.db.query.Queries <init>
 INFO: mydb database. Created a statement.
-сент. 28, 2021 8:22:57 PM service.db.query.Queries insert
+сент. 29, 2021 11:20:05 PM service.db.query.Queries insert
 INFO: mydb INSERT INTO Users SET firstName = 'xml1', lastName = 'xml1', age = 1
-сент. 28, 2021 8:22:58 PM service.db.query.Queries insert
+сент. 29, 2021 11:20:06 PM service.db.query.Queries insert
 INFO: mydb INSERT INTO Users SET firstName = 'xml2', lastName = 'xml2', age = 2
-сент. 28, 2021 8:22:58 PM service.db.query.Queries insert
+сент. 29, 2021 11:20:07 PM service.db.query.Queries insert
 INFO: mydb INSERT INTO Users SET firstName = 'xml3', lastName = 'xml3', age = 3
-сент. 28, 2021 8:22:58 PM service.db.query.Queries insert
+сент. 29, 2021 11:20:07 PM service.db.query.Queries insert
 INFO: mydb INSERT INTO Users SET firstName = 'xml4', lastName = 'xml4', age = 4
-сент. 28, 2021 8:22:58 PM service.db.query.Queries insert
+сент. 29, 2021 11:20:08 PM service.db.query.Queries insert
 INFO: mydb INSERT INTO Users SET firstName = 'json1', lastName = 'json1', age = 1
-сент. 28, 2021 8:22:58 PM service.db.query.Queries insert
+сент. 29, 2021 11:20:08 PM service.db.query.Queries insert
 INFO: mydb INSERT INTO Users SET firstName = 'json2', lastName = 'json2', age = 2
-сент. 28, 2021 8:22:59 PM service.db.query.Queries insert
+сент. 29, 2021 11:20:09 PM service.db.query.Queries insert
 INFO: mydb INSERT INTO Users SET firstName = 'json3', lastName = 'json3', age = 3
-сент. 28, 2021 8:22:59 PM service.db.query.Queries insert
+сент. 29, 2021 11:20:09 PM service.db.query.Queries insert
 INFO: mydb INSERT INTO Users SET firstName = 'json4', lastName = 'json4', age = 4
-сент. 28, 2021 8:22:59 PM service.db.query.Queries insert
+сент. 29, 2021 11:20:09 PM service.db.query.Queries insert
 INFO: mydb INSERT INTO Users SET firstName = 'csv1', lastName = 'csv1', age = 1
-сент. 28, 2021 8:22:59 PM service.db.query.Queries insert
+сент. 29, 2021 11:20:10 PM service.db.query.Queries insert
 INFO: mydb INSERT INTO Users SET firstName = 'csv2', lastName = 'csv2', age = 2
-сент. 28, 2021 8:22:59 PM service.db.query.Queries insert
+сент. 29, 2021 11:20:10 PM service.db.query.Queries insert
 INFO: mydb INSERT INTO Users SET firstName = 'csv3', lastName = 'csv3', age = 3
-сент. 28, 2021 8:22:59 PM service.db.query.Queries insert
+сент. 29, 2021 11:20:10 PM service.db.query.Queries insert
 INFO: mydb INSERT INTO Users SET firstName = 'csv4', lastName = 'csv4', age = 4
