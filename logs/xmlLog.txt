@@ -1,2 +1,2 @@
-сент. 30, 2021 8:01:48 PM service.parsers.XMLParser fileParser
+сент. 30, 2021 8:23:05 PM service.parsers.XMLParser fileParser
 INFO: Parsing xml file: D:/2/DataStorage/files/xmlListUsers.xml

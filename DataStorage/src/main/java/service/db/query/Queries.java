@@ -68,7 +68,7 @@ public class Queries {
     public List selectAll(Class myClass) throws SQLException,
             NoSuchMethodException, IllegalAccessException, InvocationTargetException,
             InstantiationException, NoSuchFieldException {
-        logQ.info(connection.getNameDB() + " Select all from " +
+        logQ.info(connection.getNameDB() + " SELECT * FROM " +
                 myClass.getDeclaredMethod("getTableName").invoke(null));
         ResultSet res = statement.executeQuery("SELECT * " + "FROM " +
                 myClass.getDeclaredMethod("getTableName").invoke(null));
@@ -86,15 +86,21 @@ public class Queries {
     }
     public List selectByField(Class myClass, Field field, String value) throws NoSuchMethodException,
             SQLException, IllegalAccessException, InvocationTargetException, InstantiationException {
-        logQ.info(connection.getNameDB() + " Select by field from " +
-                myClass.getDeclaredMethod("getTableName").invoke(null));
         ResultSet res;
         if(field.getType().equals(String.class)) {
+            logQ.info(connection.getNameDB() + " SELECT * " + "FROM " +
+                    myClass.getDeclaredMethod("getTableName").invoke(null) +
+                    " WHERE " + field.getName() +
+                    " = '" + value + "'");
             res = statement.executeQuery("SELECT * " + "FROM " +
                     myClass.getDeclaredMethod("getTableName").invoke(null) + " WHERE " + field.getName() +
                     " = '" + value + "'");
         }
         else {
+            logQ.info(connection.getNameDB() + " SELECT * " + "FROM " +
+                    myClass.getDeclaredMethod("getTableName").invoke(null) +
+                    " WHERE " + field.getName() +
+                    " = " + value);
             res = statement.executeQuery("SELECT * " + "FROM " +
                     myClass.getDeclaredMethod("getTableName").invoke(null) + " WHERE " + field.getName() +
                     " = " + value);
