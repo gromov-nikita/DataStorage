@@ -49,6 +49,12 @@ public class Runner {
                 queries.insert(x);
             }
 
+            List<User> list = queries.selectByField(
+                    User.class, User.class.getDeclaredField("age"),"4");
+            for(User x : list) {
+                System.out.println(x.toString());
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {

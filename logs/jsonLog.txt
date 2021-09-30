@@ -1,2 +1,2 @@
-сент. 29, 2021 11:33:11 PM service.parsers.JSONParser fileParser
+сент. 30, 2021 8:01:48 PM service.parsers.JSONParser fileParser
 INFO: Parsing json file: D:/2/DataStorage/files/jsonListUsers.json

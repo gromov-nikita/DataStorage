@@ -27,9 +27,7 @@ public class User implements IQueryTable{
                 ", age=" + age +
                 '}';
     }
-
-    @Override
-    public String getTableName() {
+    public static String getTableName() {
         return "Users";
     }
 }

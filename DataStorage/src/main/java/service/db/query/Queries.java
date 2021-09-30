@@ -84,6 +84,33 @@ public class Queries {
         }
         return list;
     }
+    public List selectByField(Class myClass, Field field, String value) throws NoSuchMethodException,
+            SQLException, IllegalAccessException, InvocationTargetException, InstantiationException {
+        logQ.info(connection.getNameDB() + " Select by field from " +
+                myClass.getDeclaredMethod("getTableName").invoke(null));
+        ResultSet res;
+        if(field.getType().equals(String.class)) {
+            res = statement.executeQuery("SELECT * " + "FROM " +
+                    myClass.getDeclaredMethod("getTableName").invoke(null) + " WHERE " + field.getName() +
+                    " = '" + value + "'");
+        }
+        else {
+            res = statement.executeQuery("SELECT * " + "FROM " +
+                    myClass.getDeclaredMethod("getTableName").invoke(null) + " WHERE " + field.getName() +
+                    " = " + value);
+        }
+        List list = new LinkedList();
+        Field[] fields = myClass.getDeclaredFields();
+        Constructor constructor = myClass.getDeclaredConstructors()[0];
+        Object[] objects = new Object[fields.length];
+        while(res.next()) {
+            for (int i = 0; i < objects.length; i++) {
+                objects[i] = res.getObject(fields[i].getName());
+            }
+            list.add(constructor.newInstance(objects));
+        }
+        return list;
+    }
     private StringBuffer stringMaker(StringBuffer str, IQueryTable table) throws IllegalAccessException {
         for(Field x : table.getClass().getDeclaredFields()) {
             x.setAccessible(true);
