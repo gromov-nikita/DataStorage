@@ -12,22 +12,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
 import java.util.Scanner;
-import java.util.logging.*;
+import org.apache.log4j.Logger;
 
 public class JSONParser {
     private static Logger logJSON = Logger.getLogger(JSONParser.class.getName());
-    static {
-        try {
-            Properties properties = new Properties();
-            properties.load(new FileReader("src/main/resources/logInfo.properties"));
-            Handler handler = new FileHandler(properties.getProperty("jsonLog"));
-            handler.setFormatter(new SimpleFormatter());
-            logJSON.addHandler(handler);
-            logJSON.setUseParentHandlers(false);
-        } catch (IOException e) {
-            logJSON.log(Level.WARNING,"File logger not working");
-        }
-    }
     public static List fileParser(String path, Class myClass) throws IOException,
             InvocationTargetException, NoSuchMethodException, NoSuchFieldException,
             InstantiationException, IllegalAccessException {

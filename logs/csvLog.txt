@@ -1,2 +1,0 @@
-сент. 30, 2021 8:23:07 PM service.parsers.CSVParser fileParser
-INFO: Parsing csv file : D:/2/DataStorage/files/csvListUsers.csv

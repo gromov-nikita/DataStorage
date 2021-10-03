@@ -1,5 +1,6 @@
 package service.db.query;
 import models.user.IQueryTable;
+import org.apache.log4j.Logger;
 import service.db.connection.DBConnection;
 import service.notify.Notify;
 
@@ -14,24 +15,11 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
-import java.util.logging.*;
 
 public class Queries {
     private DBConnection connection;
     private Statement statement;
     private static Logger logQ = Logger.getLogger(Queries.class.getName());
-    static {
-        try {
-            Properties properties = new Properties();
-            properties.load(new FileReader("src/main/resources/logInfo.properties"));
-            Handler handler = new FileHandler(properties.getProperty("queryLog"));
-            handler.setFormatter(new SimpleFormatter());
-            logQ.addHandler(handler);
-            logQ.setUseParentHandlers(false);
-        } catch (IOException e) {
-            logQ.log(Level.WARNING,"File logger not working");
-        }
-    }
     public Queries(DBConnection connection) throws SQLException {
         this.connection = connection;
         statement = connection.getConnection().createStatement();

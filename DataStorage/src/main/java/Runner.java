@@ -16,6 +16,16 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Properties;
 
+/*
+To develop application of parsing different format data files (.json, .xml, .csv).
+All parsed data are stored in DB.
+All actions that user produce (file process, parsing, store in db)
+should be logged and displayed as status of processing data to user.
+Application should provide report of loading information in DB.
+Provide settings of search data (fields).
+Application should notify user about completion of parsing, error of parsing (email, mobile as example)
+Use patterns.
+ */
 
 public class Runner {
     public static void main(String[] args) {
@@ -29,7 +39,7 @@ public class Runner {
             readerDBInfo = new FileReader("src/main/resources/dbInfo.properties");
             propertiesDBInfo.load(readerDBInfo);
 
-            DBConnection connection = new DBConnection(propertiesDBInfo.getProperty("login"),
+            DBConnection connection = DBConnection.getInstance(propertiesDBInfo.getProperty("login"),
                     propertiesDBInfo.getProperty("password"),
                     propertiesDBInfo.getProperty("url"));
             Queries queries = new Queries(connection);

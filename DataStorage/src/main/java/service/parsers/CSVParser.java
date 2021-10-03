@@ -7,22 +7,10 @@ import java.io.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
-import java.util.logging.*;
+import org.apache.log4j.Logger;
 
 public class CSVParser {
     private static Logger logCSV = Logger.getLogger(CSVParser.class.getName());
-    static {
-        try {
-            Properties properties = new Properties();
-            properties.load(new FileReader("src/main/resources/logInfo.properties"));
-            Handler handler = new FileHandler(properties.getProperty("csvLog"));
-            handler.setFormatter(new SimpleFormatter());
-            logCSV.addHandler(handler);
-            logCSV.setUseParentHandlers(false);
-        } catch (IOException e) {
-            logCSV.log(Level.WARNING,"File logger not working");
-        }
-    }
     public static List fileParser(String path, Class myClass) throws IllegalAccessException,
             InvocationTargetException, InstantiationException {
         Notify.notify("CSV parsing...");

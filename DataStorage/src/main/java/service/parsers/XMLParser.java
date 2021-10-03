@@ -17,22 +17,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
-import java.util.logging.*;
+import org.apache.log4j.Logger;
 
 public class XMLParser {
     private static Logger logXML = Logger.getLogger(XMLParser.class.getName());
-    static {
-        try {
-            Properties properties = new Properties();
-            properties.load(new FileReader("src/main/resources/logInfo.properties"));
-            Handler handler = new FileHandler(properties.getProperty("xmlLog"));
-            handler.setFormatter(new SimpleFormatter());
-            logXML.addHandler(handler);
-            logXML.setUseParentHandlers(false);
-        } catch (IOException e) {
-            logXML.log(Level.WARNING,"File logger not working");
-        }
-    }
     public static List fileParser(String path, Class myClass) throws ParserConfigurationException,
             IOException, SAXException, IllegalAccessException, InvocationTargetException, InstantiationException {
         Notify.notify("XML parsing...");
