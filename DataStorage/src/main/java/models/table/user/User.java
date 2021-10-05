@@ -1,4 +1,4 @@
-package models.user;
+package models.table.user;
 
 public class User implements IQueryTable{
     private String firstName;

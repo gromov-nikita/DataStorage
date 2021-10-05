@@ -1,10 +1,9 @@
-import models.user.User;
+import models.observer.PhoneObsUser;
+import models.table.user.User;
 import org.xml.sax.SAXException;
 import service.db.connection.DBConnection;
 import service.db.query.Queries;
-import service.parsers.CSVParser;
-import service.parsers.XMLParser;
-import service.parsers.JSONParser;
+import service.observable.Observer;
 import service.parsers.parser.FileParser;
 import service.parsers.parser.Type;
 
@@ -33,6 +32,11 @@ public class Runner {
         Properties propertiesDBInfo = new Properties();
         FileReader readerFileInfo = null;
         FileReader readerDBInfo = null;
+        Observer observer = new Observer();
+        FileParser parser = new FileParser(observer);
+        observer.pushObsUser(new PhoneObsUser("phone1"));
+        observer.pushObsUser(new PhoneObsUser("phone2"));
+        observer.pushObsUser(new PhoneObsUser("phone3"));
         try {
             readerFileInfo = new FileReader("src/main/resources/fileInfo.properties");
             propertiesFileInfo.load(readerFileInfo);
@@ -42,18 +46,18 @@ public class Runner {
             DBConnection connection = DBConnection.getInstance(propertiesDBInfo.getProperty("login"),
                     propertiesDBInfo.getProperty("password"),
                     propertiesDBInfo.getProperty("url"));
-            Queries queries = new Queries(connection);
-            List<User> listXML = (List<User>)FileParser.parse(
+            Queries queries = new Queries(connection, observer);
+            List<User> listXML = (List<User>)parser.parse(
                     propertiesFileInfo.getProperty("xml"), User.class, Type.XML);
             for(User x : listXML) {
                 queries.insert(x);
             }
-            List<User> listJSON = (List<User>)FileParser.parse(
+            List<User> listJSON = (List<User>)parser.parse(
                     propertiesFileInfo.getProperty("json"), User.class, Type.JSON);
             for(User x : listJSON) {
                 queries.insert(x);
             }
-            List<User> listCSV = (List<User>)FileParser.parse(
+            List<User> listCSV = (List<User>)parser.parse(
                     propertiesFileInfo.getProperty("csv"), User.class, Type.CSV);
             for(User x : listCSV) {
                 queries.insert(x);

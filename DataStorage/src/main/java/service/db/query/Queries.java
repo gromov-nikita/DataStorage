@@ -1,11 +1,9 @@
 package service.db.query;
-import models.user.IQueryTable;
+import models.table.user.IQueryTable;
 import org.apache.log4j.Logger;
 import service.db.connection.DBConnection;
-import service.notify.Notify;
+import service.observable.Observer;
 
-import java.io.FileReader;
-import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -14,26 +12,27 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Properties;
 
 public class Queries {
     private DBConnection connection;
     private Statement statement;
+    private Observer observer;
     private static Logger logQ = Logger.getLogger(Queries.class.getName());
-    public Queries(DBConnection connection) throws SQLException {
+    public Queries(DBConnection connection,Observer observer) throws SQLException {
         this.connection = connection;
         statement = connection.getConnection().createStatement();
+        this.observer = observer;
         logQ.info(connection.getNameDB() + " database. Created a statement.");
     }
     public void insert(IQueryTable query) throws SQLException, NoSuchMethodException,
             InvocationTargetException, IllegalAccessException {
-        Notify.notify("Push to database...");
+        observer.notify("Push to database...");
         StringBuffer str = new StringBuffer("INSERT INTO " +
                 query.getClass().getDeclaredMethod("getTableName").invoke(query) + " SET ");
         stringMaker(str,query);
         logQ.info(connection.getNameDB() + " " + str);
         statement.executeUpdate(String.valueOf(str));
-        Notify.notify("Successful push to database.");
+        observer.notify("Successful push to database.");
     }
     public void deleteByID(Class myClass, int id) throws NoSuchMethodException,
             InvocationTargetException, IllegalAccessException, SQLException {

@@ -1,3 +1,3 @@
-package models.user;
+package models.table.user;
 
 public interface IQueryTable {}

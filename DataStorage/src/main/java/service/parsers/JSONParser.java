@@ -2,7 +2,6 @@ package service.parsers;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import service.notify.Notify;
 
 import java.io.*;
 import java.lang.reflect.Constructor;
@@ -10,16 +9,15 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Properties;
 import java.util.Scanner;
 import org.apache.log4j.Logger;
+import service.observable.Observer;
 
 public class JSONParser {
     private static Logger logJSON = Logger.getLogger(JSONParser.class.getName());
     public static List fileParser(String path, Class myClass) throws IOException,
             InvocationTargetException, NoSuchMethodException, NoSuchFieldException,
             InstantiationException, IllegalAccessException {
-        Notify.notify("JSON parsing...");
         String str = "";
         BufferedReader reader = null;
         try {
@@ -29,7 +27,6 @@ public class JSONParser {
                 str += scan.nextLine();
             }
             List list = parseArr(str, myClass);
-            Notify.notify("Successful JSON parsing.");
             return list;
         } catch (FileNotFoundException e) {
             e.printStackTrace();

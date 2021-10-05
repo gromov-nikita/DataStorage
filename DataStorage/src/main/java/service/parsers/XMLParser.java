@@ -4,33 +4,31 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-import service.notify.Notify;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Properties;
+
 import org.apache.log4j.Logger;
+import service.observable.Observer;
 
 public class XMLParser {
     private static Logger logXML = Logger.getLogger(XMLParser.class.getName());
     public static List fileParser(String path, Class myClass) throws ParserConfigurationException,
-            IOException, SAXException, IllegalAccessException, InvocationTargetException, InstantiationException {
-        Notify.notify("XML parsing...");
+            IOException, SAXException, IllegalAccessException, InvocationTargetException,
+            InstantiationException {
         logXML.info("Parsing xml file: " + path);
         DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = builderFactory.newDocumentBuilder();
         Document document = builder.parse(new File(path));
         NodeList list = document.getElementsByTagName(myClass.getSimpleName());
         List list1 = listHandler(list, myClass);
-        Notify.notify("Successful XML parsing.");
         return list1;
     }
     public static List listHandler(NodeList nList, Class myClass) throws IllegalAccessException,
