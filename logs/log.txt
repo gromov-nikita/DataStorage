@@ -34,3 +34,21 @@
 2021-10-05 20:02:53  INFO [main]:mydb INSERT INTO Users SET firstName = 'csv3', lastName = 'csv3', age = 3
 2021-10-05 20:02:53  INFO [main]:mydb INSERT INTO Users SET firstName = 'csv4', lastName = 'csv4', age = 4
 2021-10-05 20:02:53  INFO [main]:mydb SELECT * FROM Users WHERE age = 4
+2021-10-06 23:18:46  INFO [main]:mydb database. Created a connection.
+2021-10-06 23:18:46  INFO [main]:mydb database. Created a statement.
+2021-10-06 23:18:46  INFO [main]:Parsing xml file: D:/2/DataStorage/files/xmlListUsers.xml
+2021-10-06 23:18:46  INFO [main]:mydb INSERT INTO Users SET firstName = 'xml1', lastName = 'xml1', age = 1
+2021-10-06 23:18:47  INFO [main]:mydb INSERT INTO Users SET firstName = 'xml2', lastName = 'xml2', age = 2
+2021-10-06 23:18:47  INFO [main]:mydb INSERT INTO Users SET firstName = 'xml3', lastName = 'xml3', age = 3
+2021-10-06 23:18:47  INFO [main]:mydb INSERT INTO Users SET firstName = 'xml4', lastName = 'xml4', age = 4
+2021-10-06 23:18:47  INFO [main]:Parsing json file: D:/2/DataStorage/files/jsonListUsers.json
+2021-10-06 23:18:47  INFO [main]:mydb INSERT INTO Users SET firstName = 'json1', lastName = 'json1', age = 1
+2021-10-06 23:18:47  INFO [main]:mydb INSERT INTO Users SET firstName = 'json2', lastName = 'json2', age = 2
+2021-10-06 23:18:48  INFO [main]:mydb INSERT INTO Users SET firstName = 'json3', lastName = 'json3', age = 3
+2021-10-06 23:18:48  INFO [main]:mydb INSERT INTO Users SET firstName = 'json4', lastName = 'json4', age = 4
+2021-10-06 23:18:48  INFO [main]:Parsing csv file : D:/2/DataStorage/files/csvListUsers.csv
+2021-10-06 23:18:48  INFO [main]:mydb INSERT INTO Users SET firstName = 'csv1', lastName = 'csv1', age = 1
+2021-10-06 23:18:48  INFO [main]:mydb INSERT INTO Users SET firstName = 'csv2', lastName = 'csv2', age = 2
+2021-10-06 23:18:48  INFO [main]:mydb INSERT INTO Users SET firstName = 'csv3', lastName = 'csv3', age = 3
+2021-10-06 23:18:48  INFO [main]:mydb INSERT INTO Users SET firstName = 'csv4', lastName = 'csv4', age = 4
+2021-10-06 23:18:48  INFO [main]:mydb SELECT * FROM Users WHERE age = 4

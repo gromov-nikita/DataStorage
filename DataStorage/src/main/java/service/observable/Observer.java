@@ -1,7 +1,6 @@
 package service.observable;
 
 import models.observer.IObsUser;
-import models.observer.PhoneObsUser;
 
 import java.util.LinkedList;
 import java.util.List;

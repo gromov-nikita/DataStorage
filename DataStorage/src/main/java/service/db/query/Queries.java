@@ -1,5 +1,4 @@
 package service.db.query;
-import models.table.user.IQueryTable;
 import org.apache.log4j.Logger;
 import service.db.connection.DBConnection;
 import service.observable.Observer;
@@ -24,7 +23,7 @@ public class Queries {
         this.observer = observer;
         logQ.info(connection.getNameDB() + " database. Created a statement.");
     }
-    public void insert(IQueryTable query) throws SQLException, NoSuchMethodException,
+    public void insert(Object query) throws SQLException, NoSuchMethodException,
             InvocationTargetException, IllegalAccessException {
         observer.notify("Push to database...");
         StringBuffer str = new StringBuffer("INSERT INTO " +
@@ -43,7 +42,7 @@ public class Queries {
                 "DELETE FROM " + myClass.getDeclaredMethod("getTableName").invoke(null) +
                         " WHERE ID= " + id);
     }
-    public void updateByID(IQueryTable query, int id) throws SQLException, NoSuchFieldException,
+    public void updateByID(Object query, int id) throws SQLException, NoSuchFieldException,
             IllegalAccessException, InvocationTargetException, InstantiationException, NoSuchMethodException {
         StringBuffer str = new StringBuffer("UPDATE " +
                 query.getClass().getDeclaredMethod("getTableName").invoke(query) + " SET ");
@@ -104,7 +103,7 @@ public class Queries {
         }
         return list;
     }
-    private StringBuffer stringMaker(StringBuffer str, IQueryTable table) throws IllegalAccessException {
+    private StringBuffer stringMaker(StringBuffer str, Object table) throws IllegalAccessException {
         for(Field x : table.getClass().getDeclaredFields()) {
             x.setAccessible(true);
             if(x.getType() != String.class) {

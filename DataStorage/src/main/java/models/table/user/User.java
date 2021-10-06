@@ -1,6 +1,6 @@
 package models.table.user;
 
-public class User implements IQueryTable{
+public class User {
     private String firstName;
     private String lastName;
     private int age;
